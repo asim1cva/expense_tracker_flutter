@@ -1,16 +1,42 @@
-# expense_tracker_flutter
+# PennyWise
 
-A Expense tracker app
+A premium Expense Tracker application built with Flutter.
+
+![App Screenshot](assets/screenshots/app_screenshot.png)
+
+## Features
+
+- **Sleek Dashboard**: Overview of your monthly budget and spending.
+- **Transaction History**: Track your daily expenses with ease.
+- **Budget Management**: Set and monitor your financial goals.
+- **Rich UI**: Modern dark mode with gold and amber accents.
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter SDK
+- Dart SDK
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/expense_tracker_flutter.git
+    ```
+2.  Install dependencies:
+    ```bash
+    flutter pub get
+    ```
+3.  Run the app:
+    ```bash
+    flutter run
+    ```
+
+## Resources
+
+- [Flutter Documentation](https://docs.flutter.dev/)
+- [Riverpod Documentation](https://riverpod.dev/)
+- [GoRouter Documentation](https://pub.dev/packages/go_router)
