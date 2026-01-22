@@ -1,4 +1,4 @@
-# PennyWise
+# My Expense Tracker
 
 A premium Expense Tracker application built with Flutter.
 

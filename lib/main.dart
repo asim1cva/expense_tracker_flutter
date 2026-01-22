@@ -19,7 +19,7 @@ class MyApp extends ConsumerWidget {
     final goRouter = ref.watch(goRouterProvider);
     return MaterialApp.router(
       routerConfig: goRouter,
-      title: 'PennyWise',
+      title: 'My Expense Tracker',
       theme: AppTheme.darkTheme,
       themeMode: ThemeMode.dark,
     );

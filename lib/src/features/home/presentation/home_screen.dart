@@ -33,7 +33,7 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text('PennyWise'),
+        title: const Text('My Expense Tracker'),
         backgroundColor: Colors.transparent,
       ),
       body: LiquidBackground(
