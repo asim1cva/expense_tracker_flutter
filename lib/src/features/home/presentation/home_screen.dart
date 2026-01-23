@@ -16,13 +16,18 @@ class HomeScreen extends ConsumerWidget {
   void _openAddTransactionOverlay(
     BuildContext context, {
     TransactionModel? transaction,
+    String? category,
+    TransactionType? type,
   }) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor:
-          Colors.transparent, // Important for glass effect in modal
-      builder: (ctx) => AddTransactionModal(transaction: transaction),
+      backgroundColor: Colors.transparent,
+      builder: (ctx) => AddTransactionModal(
+        transaction: transaction,
+        initialCategory: category,
+        initialType: type,
+      ),
     );
   }
 
@@ -45,6 +50,13 @@ class HomeScreen extends ConsumerWidget {
                 slivers: [
                   SliverToBoxAdapter(
                     child: TransactionSummaryCard(transactions: transactions),
+                  ),
+                  SliverToBoxAdapter(child: _buildQuickCategories(context)),
+                  SliverToBoxAdapter(
+                    child: _buildSectionHeader(
+                      context,
+                      title: 'Recent Transactions',
+                    ),
                   ),
                   if (transactions.isEmpty)
                     SliverFillRemaining(
@@ -256,6 +268,110 @@ class HomeScreen extends ConsumerWidget {
           ),
           child: const Icon(Icons.add, color: Colors.white),
         ),
+      ),
+    );
+  }
+
+  Widget _buildQuickCategories(BuildContext context) {
+    final categories = [
+      {
+        'name': 'Food',
+        'icon': Icons.restaurant_rounded,
+        'color': Colors.orangeAccent,
+      },
+      {
+        'name': 'Transport',
+        'icon': Icons.directions_car_rounded,
+        'color': Colors.blueAccent,
+      },
+      {
+        'name': 'Shopping',
+        'icon': Icons.shopping_bag_rounded,
+        'color': Colors.pinkAccent,
+      },
+      {
+        'name': 'Health',
+        'icon': Icons.medical_services_rounded,
+        'color': Colors.greenAccent,
+      },
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildSectionHeader(context, title: 'Quick Categories'),
+        SizedBox(
+          height: 100,
+          child: ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            scrollDirection: Axis.horizontal,
+            itemCount: categories.length,
+            itemBuilder: (context, index) {
+              final cat = categories[index];
+              return Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: GestureDetector(
+                  onTap: () => _openAddTransactionOverlay(
+                    context,
+                    category: cat['name'] as String,
+                    type: TransactionType.expense,
+                  ),
+                  child: Column(
+                    children: [
+                      GlassContainer(
+                        padding: const EdgeInsets.all(16),
+                        borderRadius: 20,
+                        child: Icon(
+                          cat['icon'] as IconData,
+                          color: cat['color'] as Color,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        cat['name'] as String,
+                        style: const TextStyle(
+                          color: Colors.white70,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSectionHeader(BuildContext context, {required String title}) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 24, 20, 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          if (title == 'Recent Transactions')
+            TextButton(
+              onPressed: () {
+                // Future: Navigate to all transactions
+              },
+              child: Text(
+                'View All',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }
