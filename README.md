@@ -1,8 +1,8 @@
-# PennyWise - Premium Expense Tracker
+# My Expense Tracker - Premium Expense Tracker
 
-PennyWise is a modern, high-performance expense tracking application built with Flutter. It features a stunning dark-mode aesthetic with gold and amber accents, leveraging glassmorphism and liquid animations for a premium user experience.
+My Expense Tracker is a modern, high-performance expense tracking application built with Flutter. It features a stunning dark-mode aesthetic with gold and amber accents, leveraging glassmorphism and liquid animations for a premium user experience.
 
-![App Dashboard](assets/screenshots/app_screenshot.png)
+![App Dashboard](assets/screenshots/home.png)
 
 ## ✨ Features
 
